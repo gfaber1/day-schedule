@@ -25,10 +25,10 @@
   <body>
     <header class="p-5 mb-4 border-5 border-bottom border-dark text-center">
       <h1 class="display-3">Day planner </h1>
-      <p class="lead">Simply the easiest way to save the time</p>
+      <p class="lead">Now you wont forget</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div class="container-lg px-5">
+    <div id="container" class="container-lg px-5"></div>
       <!-- Use class for "past", "present", and "future" to apply styles to the
         time-block divs accordingly. The javascript will need to do this by
         adding/removing these classes on each div by comparing the hour in the
@@ -114,9 +114,7 @@
         </button>
       </div>
     -->
-    <div id="container" class="container-lg px-6" >
-      <!--dynamically added code will appear here -->
-    </div>
+    
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script
