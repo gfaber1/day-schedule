@@ -11,7 +11,7 @@ setInterval(currentDay, 1000);
 var currentTime = parseInt(dayjs().format('H'))
 
 //an array for the hours from 9-5
-let time = [9, 10, 11, 12, 13, 14, 15, 16, 17]
+var time = [9, 10, 11, 12, 13, 14, 15, 16, 17]
 
 //this const is selecting the html div element that will hold the dynamically rendered code
 const containerElements = $('#container')
@@ -29,15 +29,15 @@ function workHours() {
     var dayTime = time[i] + 'AM'
 
     if (time[i] >= 12) {
-      dayTime = time[i] + ' PM';
+      dayTime = time[i] + 'PM';
       if (time[i] >= 13) {
-        dayTime = time[i] - 12 + ' PM';
+        dayTime = time[i] - 12 + 'PM';
       }
     }
     colTimer.append(dayTime)
 
     // creates a textarea for the user to type in their TODO
-    var textArea = $("<textarea class='col-8 col-md-10 description time-block' rows='3'>")
+    var textArea = $("<textarea class=' col-md-10 col-8' rows='3'>")
     textArea.attr('id', 'hour-' + [i + 9])
 
       .append(textArea)
