@@ -3,11 +3,16 @@ var currentDay = function () {
   var todayHeader = dayjs();
   $('#currentDay').text(todayHeader.format('MMM D, YYYY h:mm:ss a'));
 };
+
 // interval update for seconds
 setInterval(currentDay, 1000);
+
 //uses day.js to find out the time and gives us an hour
 var currentTime = parseInt(dayjs().format('H'))
+
+//an array for the hours from 9-5
 let time = [9, 10, 11, 12, 13, 14, 15, 16, 17]
+
 //this const is selecting the html div element that will hold the dynamically rendered code
 const containerElements = $('#container')
 
