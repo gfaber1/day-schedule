@@ -8,17 +8,18 @@ setInterval(currentDay, 1000);
 //uses day.js to find out the time and gives us an hour
 var currentTime = parseInt(dayjs().format('H'))
 let time = [9, 10, 11, 12, 13, 14, 15, 16, 17]
-
+//this const is selecting the html div element that will hold the dynamically rendered code
 const containerElements = $('#container')
 
 function workHours() {
   //for loop
   for (let i = 0; i < time.length; i++) {
-    //creates a new html <div> element and sets the class to 'row'
+    //creates a new html div element and sets the class to row
     var row = $("<div class='row'>");
     row.attr('id', 'hour-' + [i + 9])
 
-    var colTimer = $("<div class='col-sm-2 col-md-1 py-3 hour text-center'>")
+    // creates a div element to hold the time of day
+    colTimer = $("<div class='col-sm-2 col-md-1 py-3 hour text-center'>")
 
     var dayTime = time[i] + 'AM'
 
@@ -30,15 +31,13 @@ function workHours() {
     }
     colTimer.append(dayTime)
 
-    //var colMemo = $("<div class='col-8 col-md-10'>")
-
+    // creates a textarea for the user to type in their TODO
     var textArea = $("<textarea class='col-8 col-md-10 description time-block' rows='3'>")
     textArea.attr('id', 'hour-' + [i + 9])
 
       .append(textArea)
 
-    //colMemo.append(textArea)
-
+    // if statements to read the time of day and change the class of the html elements so that the css can interact with it properly
     if (currentTime > time[i]) {
       textArea.addClass('past')
     }
@@ -57,10 +56,11 @@ function workHours() {
     button.attr('id', 'hour-' + [i + 9])
     colSave.append(button)
 
-
-
+    // appends all of the elements to the page inside of the container
     containerElements.append(row.append(colTimer, textArea, button))
   }
+
+  // event listener for a click on the button, when clicked it will save the textarea contents to the local storage 
   $(".saveBtn").on("click", function () {
     var textPlanner = $(this).siblings("textarea").val();
     var timePlanner = $(this).parent().attr("id");
@@ -68,7 +68,7 @@ function workHours() {
   })
 
 
-  // here we are getting the local storage key and value pairs and setting the value to it. 
+  // here the code gets the value of the text area from the local storage
   $("#hour-9").children("textarea").val(localStorage.getItem("hour-9"));
   $("#hour-10").children("textarea").val(localStorage.getItem("hour-10"));
   $("#hour-11").children("textarea").val(localStorage.getItem("hour-11"));
@@ -81,39 +81,5 @@ function workHours() {
 
 }
 
+//calls the function
 workHours()
-/*$(function () {
-
-
-
-  // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-
-  //
-  // TODO: Add code to display the current date in the header of the page.
-  // the save button will now save the textarea to the local storage
-  $(".saveBtn").on("click", function () {
-    var eventText = $(this).siblings("textarea").val();
-    var timeBlock = $(this).parent().attr("id");
-    localStorage.setItem(timeBlock, eventText);
-  })
-
-
-  // setting value to the local storage 
-  $("#hour-9").children("textarea").val(localStorage.getItem("hour-9"));
-  $("#hour-10").children("textarea").val(localStorage.getItem("hour-10"));
-  $("#hour-11").children("textarea").val(localStorage.getItem("hour-11"));
-  $("#hour-12").children("textarea").val(localStorage.getItem("hour-12"));
-  $("#hour-13").children("textarea").val(localStorage.getItem("hour-13"));
-  $("#hour-14").children("textarea").val(localStorage.getItem("hour-14"));
-  $("#hour-15").children("textarea").val(localStorage.getItem("hour-15"));
-  $("#hour-16").children("textarea").val(localStorage.getItem("hour-16"));
-  $("#hour-17").children("textarea").val(localStorage.getItem("hour-17"));
-
-});
-
-*/
